@@ -18,7 +18,7 @@ namespace U3ExamEmpSys
         private static SqlDataReader dbReader;      // reader object
         private static FullTime aFullTime;
         private static string sConnection = 
-            "Data Source=stusql-fa18cis151-rr.cimq4ah3jd04.us-east-2.rds.amazonaws.com,1433; " +
+            "Data Source=" +
             "Initial Catalog=; User Id=; Password=";          // connection string
         private static string sql;                  // sql command string
 
@@ -70,13 +70,13 @@ namespace U3ExamEmpSys
                     dbReader["LastName"].ToString(),
                     dbReader["DateHired"].ToString(),
                     dbReader["SSN"].ToString(),
-                    dbReader["Emamil"].ToString(),
+                    dbReader["Email"].ToString(),
                     dbReader["PhoneNumber"].ToString(),
                     dbReader["TaxRate"].ToString(),
                     dbReader["Salary"].ToString(),
                     dbReader["NumberVacationDays"].ToString(),
                     dbReader["NumberSickDays"].ToString(),
-                    dbReader["IsTaxEmept"].ToString(),
+                    dbReader["IsTaxExempt"].ToString(),
                     dbReader["IsInsured"].ToString());
                 fullEmp.Add(aFullTime);
             } // end of while
@@ -90,8 +90,8 @@ namespace U3ExamEmpSys
             try
             {
                 // set up sql command
-                sql = "SELECT * FROM EmployeeTable" +
-                    "JOIN FullTime ON EmployeeTable.EmployeeID = FullTime.EmployeeID;" +
+                sql = "SELECT * FROM EmployeeTable " +
+                    "JOIN FullTime ON EmployeeTable.EmployeeID = FullTime.EmployeeID " +
                     "ORDER BY LastName ASC, FirstName ASC;";
                 dbCmd = new SqlCommand();
                 dbCmd.CommandText = sql;
@@ -99,7 +99,7 @@ namespace U3ExamEmpSys
 
                 // run sql commadn
                 dbReader = dbCmd.ExecuteReader();
-                //return dbReader;
+               return dbReader;
             } // end of try
             catch(System.Exception e)
             {
@@ -112,7 +112,7 @@ namespace U3ExamEmpSys
         public static void InsertFullTimer(FullTime insFull)
         {
             // add to employee table
-            sql = "INSERT INTO EmployeeTable(EmployeeID, FirstName, LastName, DateHired, SSN, Email, PhoneNumber, TaxRate)" +
+            sql = "INSERT INTO EmployeeTable(EmployeeID, FirstName, LastName, DateHired, SSN, Email, PhoneNumber, TaxRate) " +
                 "VALUES ('" +
                 insFull.Id + "', '" + insFull.FirstName + "', '" +
                 insFull.LastName + "', '" + insFull.Doh + "', '" +
@@ -126,11 +126,11 @@ namespace U3ExamEmpSys
 
             // adds to f/t table
 
-            sql = "INSERT INTO FullTime(Salary, NumberVacationDays, NumberSickDays, IsTaxExempt, IsInsured, EmployeeID)" +
+            sql = "INSERT INTO FullTime(Salary, NumberVacationDays, NumberSickDays, IsTaxExempt, IsInsured, EmployeeID) " +
                 "VALUES('" +
                 insFull.Salary + "', '" + insFull.VacDays + "', '" +
                 insFull.SickDays + "', '" + insFull.TaxExempt + "', '" +
-                insFull.Insured + "', '" + insFull.Id + "');";
+                insFull.Insured + "', '" + insFull.Id +  "');";
             OpenDB();
             SqlCommand cmdInsert = new SqlCommand(sql, dbConn);
             ExecCommand (cmdInsert);
@@ -141,14 +141,14 @@ namespace U3ExamEmpSys
         {
 
             // to update the employee table
-            sql = $"UPDATE EmployeeTable" +
-                  $"SET FirstName = '{updEmp.FirstName}'," +
-                  $"    LastName = '{updEmp.LastName}'," +
-                  $"    DateHired = '{updEmp.Doh}'," +
-                  $"    SSN = '{updEmp.Ssn}'," +
+            sql = $"UPDATE EmployeeTable " +
+                  $"SET FirstName = '{updEmp.FirstName}', " +
+                  $"    LastName = '{updEmp.LastName}', " +
+                  $"    DateHired = '{updEmp.Doh}', " +
+                  $"    SSN = '{updEmp.Ssn}', " +
                   $"    Email = '{updEmp.EMail}'," +
-                  $"    PhoneNumber = '{updEmp.PhoneNum}'," +
-                  $"    TaxRate = '{updEmp.TaxRate}'" +
+                  $"    PhoneNumber = '{updEmp.PhoneNum}', " +
+                  $"    TaxRate = '{updEmp.TaxRate}' " +
                 $"WHERE EmployeeID = '{updEmp.Id}';";
             OpenDB();
             SqlCommand cmdUpdate = new SqlCommand(sql, dbConn);
@@ -156,12 +156,12 @@ namespace U3ExamEmpSys
             CloseDB();
 
             // updates the fulltime table
-            sql = $"UPDATE FullTime" +
+            sql = $"UPDATE FullTime " +
                   $"SET Salary = '{updEmp.Salary}', " +
                   $"    NumberVacationDays = '{updEmp.VacDays}', " +
                   $"    NumberSickDays = '{updEmp.SickDays}', " +
-                  $"    IsTaxExempt = '{updEmp.TaxExempt}'," +
-                  $"IsInsured = '{updEmp.Insured}'," +
+                  $"    IsTaxExempt = '{updEmp.TaxExempt}', " +
+                  $"IsInsured = '{updEmp.Insured}' " +
                 $"WHERE EmployeeID = '{updEmp.Id}';";
             OpenDB();
             cmdUpdate = new SqlCommand(sql, dbConn);
@@ -169,6 +169,16 @@ namespace U3ExamEmpSys
             CloseDB();
         } // end of UpdateEmployee
 
+        public static void DeleteEmployee(FullTime delEmp)
+        {
+            // sql to delete row where id = 
+            sql = "DELETE FROM EmployeeTable WHERE EmployeeID = '" + delEmp.Id + "';";
+            OpenDB();
+            SqlCommand cmdDelete = new SqlCommand(sql, dbConn);
+            ExecCommand(cmdDelete);
+            CloseDB();
+        } // end of delete
+            
 
         public static void ExecCommand(SqlCommand theCmd)
         {

@@ -76,8 +76,25 @@ namespace U3ExamEmpSys
             salary = decimal.Parse(salaryAmt);
             vacDays = Convert.ToDouble(vDays);
             sickDays = Convert.ToDouble(sDays);
-            taxExempt = Boolean.Parse(taxEx);
-            insured = Boolean.Parse(insurance);
+                    // need to convert the string Y or N  to the actual true or false
+            if (taxEx == "Y")
+            {
+                taxExempt = true;
+            } // end of true
+            else
+            {
+                taxExempt = false;
+            } // end of false
+            //taxExempt = Boolean.Parse(taxEx);
+            if (insurance == "Y")
+            {
+                insured = true;
+            } // end of true
+            else
+            {
+                insured = false;
+            } // end of false
+            //insured = Boolean.Parse(insurance);
         } // end of Fulltime with args for employee
 
         /// <summary>
@@ -150,6 +167,11 @@ namespace U3ExamEmpSys
         {
             DataAccess.UpdateEmployee(this);
         } // end of insertEmployee
+
+        public void DeleteEmp()
+        {
+            DataAccess.DeleteEmployee(this);
+        } // end of delete
 
         #endregion Method
 

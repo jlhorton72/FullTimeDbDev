@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmpForm));
             this.lstBxFullTime = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLoad = new System.Windows.Forms.Button();
@@ -64,6 +63,7 @@
             this.txtBxTaxRate = new System.Windows.Forms.TextBox();
             this.txtBxPhNum = new System.Windows.Forms.TextBox();
             this.txtBxMail = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,7 @@
             this.lstBxFullTime.Name = "lstBxFullTime";
             this.lstBxFullTime.Size = new System.Drawing.Size(236, 202);
             this.lstBxFullTime.TabIndex = 0;
+            this.lstBxFullTime.TabStop = false;
             this.lstBxFullTime.SelectedIndexChanged += new System.EventHandler(this.lstBxFullTime_SelectedIndexChanged);
             // 
             // label1
@@ -95,6 +96,7 @@
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(108, 38);
             this.btnLoad.TabIndex = 2;
+            this.btnLoad.TabStop = false;
             this.btnLoad.Text = "Load EE\'s";
             this.btnLoad.UseVisualStyleBackColor = false;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
@@ -149,42 +151,42 @@
             this.txtBxSal.Location = new System.Drawing.Point(1068, 93);
             this.txtBxSal.Name = "txtBxSal";
             this.txtBxSal.Size = new System.Drawing.Size(191, 29);
-            this.txtBxSal.TabIndex = 8;
+            this.txtBxSal.TabIndex = 9;
             // 
             // txtBxVacDay
             // 
             this.txtBxVacDay.Location = new System.Drawing.Point(1068, 134);
             this.txtBxVacDay.Name = "txtBxVacDay";
             this.txtBxVacDay.Size = new System.Drawing.Size(191, 29);
-            this.txtBxVacDay.TabIndex = 9;
+            this.txtBxVacDay.TabIndex = 10;
             // 
             // txtBxSick
             // 
             this.txtBxSick.Location = new System.Drawing.Point(1068, 175);
             this.txtBxSick.Name = "txtBxSick";
             this.txtBxSick.Size = new System.Drawing.Size(191, 29);
-            this.txtBxSick.TabIndex = 10;
+            this.txtBxSick.TabIndex = 11;
             // 
             // txtBxTax
             // 
             this.txtBxTax.Location = new System.Drawing.Point(1068, 217);
             this.txtBxTax.Name = "txtBxTax";
             this.txtBxTax.Size = new System.Drawing.Size(191, 29);
-            this.txtBxTax.TabIndex = 11;
+            this.txtBxTax.TabIndex = 12;
             // 
             // txtBxIns
             // 
             this.txtBxIns.Location = new System.Drawing.Point(1068, 261);
             this.txtBxIns.Name = "txtBxIns";
             this.txtBxIns.Size = new System.Drawing.Size(191, 29);
-            this.txtBxIns.TabIndex = 12;
+            this.txtBxIns.TabIndex = 13;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1111, 347);
+            this.btnOK.Location = new System.Drawing.Point(1058, 390);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(112, 44);
-            this.btnOK.TabIndex = 13;
+            this.btnOK.Size = new System.Drawing.Size(171, 86);
+            this.btnOK.TabIndex = 14;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -213,7 +215,7 @@
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
+            this.toolStripButtonAdd.Image = global::U3ExamEmpSys.Properties.Resources.Add_16x16;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(23, 22);
@@ -224,7 +226,7 @@
             // toolStripButtonUpdate
             // 
             this.toolStripButtonUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUpdate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUpdate.Image")));
+            this.toolStripButtonUpdate.Image = global::U3ExamEmpSys.Properties.Resources.Edit_16x16;
             this.toolStripButtonUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUpdate.Name = "toolStripButtonUpdate";
             this.toolStripButtonUpdate.Size = new System.Drawing.Size(23, 22);
@@ -235,40 +237,41 @@
             // toolStripButtonDelete
             // 
             this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDelete.Image")));
+            this.toolStripButtonDelete.Image = global::U3ExamEmpSys.Properties.Resources.Delete_16x16;
             this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonDelete.Text = "toolStripButton3";
             this.toolStripButtonDelete.ToolTipText = "Delete Employee";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
             // txtBxSSN
             // 
             this.txtBxSSN.Location = new System.Drawing.Point(601, 261);
             this.txtBxSSN.Name = "txtBxSSN";
             this.txtBxSSN.Size = new System.Drawing.Size(191, 29);
-            this.txtBxSSN.TabIndex = 25;
+            this.txtBxSSN.TabIndex = 5;
             // 
             // txtBxDOH
             // 
             this.txtBxDOH.Location = new System.Drawing.Point(601, 217);
             this.txtBxDOH.Name = "txtBxDOH";
-            this.txtBxDOH.Size = new System.Drawing.Size(191, 29);
-            this.txtBxDOH.TabIndex = 24;
+            this.txtBxDOH.Size = new System.Drawing.Size(277, 29);
+            this.txtBxDOH.TabIndex = 4;
             // 
             // txtBxLName
             // 
             this.txtBxLName.Location = new System.Drawing.Point(601, 175);
             this.txtBxLName.Name = "txtBxLName";
             this.txtBxLName.Size = new System.Drawing.Size(191, 29);
-            this.txtBxLName.TabIndex = 23;
+            this.txtBxLName.TabIndex = 3;
             // 
             // txtBxFName
             // 
             this.txtBxFName.Location = new System.Drawing.Point(601, 134);
             this.txtBxFName.Name = "txtBxFName";
             this.txtBxFName.Size = new System.Drawing.Size(191, 29);
-            this.txtBxFName.TabIndex = 22;
+            this.txtBxFName.TabIndex = 1;
             // 
             // txtBxEmpID
             // 
@@ -277,7 +280,6 @@
             this.txtBxEmpID.Name = "txtBxEmpID";
             this.txtBxEmpID.Size = new System.Drawing.Size(191, 29);
             this.txtBxEmpID.TabIndex = 21;
-            this.txtBxEmpID.TabStop = false;
             // 
             // label2
             // 
@@ -356,21 +358,34 @@
             this.txtBxTaxRate.Location = new System.Drawing.Point(601, 405);
             this.txtBxTaxRate.Name = "txtBxTaxRate";
             this.txtBxTaxRate.Size = new System.Drawing.Size(191, 29);
-            this.txtBxTaxRate.TabIndex = 29;
+            this.txtBxTaxRate.TabIndex = 8;
             // 
             // txtBxPhNum
             // 
             this.txtBxPhNum.Location = new System.Drawing.Point(601, 355);
             this.txtBxPhNum.Name = "txtBxPhNum";
             this.txtBxPhNum.Size = new System.Drawing.Size(191, 29);
-            this.txtBxPhNum.TabIndex = 30;
+            this.txtBxPhNum.TabIndex = 7;
             // 
             // txtBxMail
             // 
             this.txtBxMail.Location = new System.Drawing.Point(601, 312);
             this.txtBxMail.Name = "txtBxMail";
-            this.txtBxMail.Size = new System.Drawing.Size(191, 29);
-            this.txtBxMail.TabIndex = 31;
+            this.txtBxMail.Size = new System.Drawing.Size(453, 29);
+            this.txtBxMail.TabIndex = 6;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(843, 390);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(184, 86);
+            this.btnDelete.TabIndex = 29;
+            this.btnDelete.Text = "Delete Only";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // EmpForm
             // 
@@ -378,6 +393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1392, 549);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtBxMail);
             this.Controls.Add(this.txtBxPhNum);
             this.Controls.Add(this.txtBxTaxRate);
@@ -412,7 +428,7 @@
             this.Controls.Add(this.lstBxFullTime);
             this.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Blue;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "EmpForm";
             this.Text = "FullTime Management";
             this.Load += new System.EventHandler(this.EmpForm_Load);
@@ -460,6 +476,7 @@
         private System.Windows.Forms.TextBox txtBxTaxRate;
         private System.Windows.Forms.TextBox txtBxPhNum;
         private System.Windows.Forms.TextBox txtBxMail;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
